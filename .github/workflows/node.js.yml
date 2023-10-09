@@ -57,14 +57,14 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "."  # Path to your code on the local machine
-          target: "/home/ubuntu/githubactionsrepo"
+          target: "/home/ubuntu/actions-runner/_work/githubactionsrepo/githubactionsrepo"
 
       - name: SSH into EC2 and deploy
         run: |
           ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} <<EOF
-            cd /home/ubuntu/githubactionsrepo
+            cd /home/ubuntu/actions-runner/_work/githubactionsrepo/githubactionsrepo
             # Run deployment commands here
-            git pull
+            git pulld
             npm install
             sudo pm2 restart app1
           EOF
