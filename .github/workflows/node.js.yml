@@ -19,6 +19,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
+    
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -27,3 +30,40 @@ jobs:
     - run: npm i
     - run: sudo pm2 restart app1
     
+
+
+
+
+
+# name: Deploy to EC2
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   deploy:
+#     runs-on: self-hosted
+
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v2
+
+#       - name: Copy code to EC2
+#         uses: appleboy/scp-action@master
+#         with:
+#           host: ${{ secrets.EC2_HOST }}
+#           username: ${{ secrets.EC2_USERNAME }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#           source: "."  # Path to your code on the local machine
+#           target: "/path/to/destination/on/ec2"
+
+#       - name: SSH into EC2 and deploy
+#         run: |
+#           ssh -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} <<EOF
+#             cd /path/to/destination/on/ec2
+#             # Run deployment commands here
+#             npm install
+#             sudo pm2 restart app1
+#           EOF
