@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function (req, res) {
-    res.send('{ "response": "Hello From Github Actions - Syed Hamza Bukhari - lksdgjnlksdnglknsldgnjlksdjng" }');
+    res.send('{ "response": "Hello From Github Actions - Syed Hamza Bukhari - Zargham" }');
 });
 
 app.get('/will', function (req, res) {
