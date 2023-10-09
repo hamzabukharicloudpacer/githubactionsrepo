@@ -28,7 +28,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm i
-    - run: pm2 start npm --name umair -- start
+    # - run: pm2 start npm --name umair -- start
+    - run: pm2 restart 0
     
 
 
